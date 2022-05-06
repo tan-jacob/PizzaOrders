@@ -14,51 +14,10 @@ namespace PizzaOrders.Model
             : base(options)
         {
         }
-       
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Entity<Order>().HasData(
-        //        new Order
-        //        {
-        //            Id = 1,
-        //            CustomerName = "Bob Joe",
-        //            CustomerAddr = "123 Street",
-        //            IsDelivered = false,
-        //            Pizza = "Medium Cheese"
-        //        },
-
-        //        new Order
-        //        {
-        //            Id = 2,
-        //            CustomerName = "Jim Don",
-        //            CustomerAddr = "456 Street",
-        //            IsDelivered = false,
-        //            Pizza = "Large Pepperoni"
-        //        },
-
-        //        new Order
-        //        {
-        //            Id = 3,
-        //            CustomerName = "Jon Doe",
-        //            CustomerAddr = "789 Street",
-        //            IsDelivered = true,
-        //            Pizza = "Small Canadian"
-        //        },
-
-        //        new Order
-        //        {
-        //            Id = 4,
-        //            CustomerName = "Jim Jon",
-        //            CustomerAddr = "984 Street",
-        //            IsDelivered = true,
-        //            Pizza = "Medium Hawaiian"
-        //        }
-        //        );
-        //}
+      
         //Seed database
         public void LoadOrders()
         {
-         
             PizzaOrders.Add(new Order
             {
                 Id = 1,
@@ -122,7 +81,6 @@ namespace PizzaOrders.Model
             order.Id = PizzaOrders.Local.Count + 1;
 
             PizzaOrders.Add(order);
-
         }
 
         public void MarkOrderDelivered(Order order)

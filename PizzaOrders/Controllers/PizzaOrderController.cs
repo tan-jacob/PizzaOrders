@@ -31,7 +31,7 @@ namespace PizzaOrders.Controllers
         }
 
         //Get all orders
-        //http://localhost:88888/pizzaorder
+        //http://localhost:xxxxx/pizzaorder
         [HttpGet]
         public ActionResult<List<Order>> GetAll()
         {
@@ -40,7 +40,7 @@ namespace PizzaOrders.Controllers
         }
 
         //Get all pending orders
-        //http://localhost:88888/pizzaorder/pending
+        //http://localhost:xxxxx/pizzaorder/pending
         [HttpGet("pending")]
         public ActionResult<IEnumerable<Order>> GetAllPending()
         {
@@ -53,7 +53,7 @@ namespace PizzaOrders.Controllers
         }
 
         //Get order by id
-        //http://localhost:88888/{id}
+        //http://localhost:xxxxx/pizzaorder/{id}
         [HttpGet("{id}")]
         public ActionResult<Order> Get(int id)
         {
@@ -66,7 +66,18 @@ namespace PizzaOrders.Controllers
             return Ok(order);
         }
 
+        //Seed database
+        //http://localhost:xxxxx/pizzaorder/seed
+        [HttpPost("seed")]
+        public ActionResult SeedDatabase()
+        {
+            context.LoadOrders();
+            context.SaveChanges();
+            return Ok("Database seeded");
+        }
+
         //Create a new order
+        //http://localhost:xxxxx/pizzaorder/?name=xxxxx&addr=xxxxx
         [HttpPost]
         public async Task<ActionResult> CreateOrder(string name, string addr)
         {
@@ -85,6 +96,7 @@ namespace PizzaOrders.Controllers
         }
 
         //Mark order as delivered
+        //http://localhost:xxxxx/pizzaorder/{id}
         [HttpPut("{id}")]
         public IActionResult MarkAsDelivered(int id)
         {
@@ -104,6 +116,7 @@ namespace PizzaOrders.Controllers
         }
 
         //Delete order
+        //http://localhost:xxxxx/pizzaorder/{id}
         [HttpDelete("{id}")]
         public ActionResult DeleteOrder(int id)
         {
